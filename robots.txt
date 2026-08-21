@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://matthewgomez1098-maker.github.io/miguels-ac/sitemap.xml
