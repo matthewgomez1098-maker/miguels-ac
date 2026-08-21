@@ -78,6 +78,24 @@ The bundle is a preview, not the deployable site. It differs deliberately:
 
 Re-run `build.py` before `bundle.py` — the bundler reads the generated pages.
 
+## Advertising plan
+
+`plan/ads.html` — the customer-acquisition plan. Channel map, seasonal budget
+curve, a live unit-economics calculator and a 90-day rollout schedule.
+
+**https://matthewgomez1098-maker.github.io/miguels-ac/plan/ads.html**
+
+Internal document: marked `noindex` and disallowed in `robots.txt`, and nothing
+on the site links to it.
+
+Chart colours are the data-viz reference categorical palette, validated against
+both page surfaces. The light-mode aqua sits below 3:1 contrast, so every mark
+carries a direct label and each chart has a table view — that is the required
+relief, not decoration. Don't swap the palette without re-running the validator.
+
+Every cost figure in it is an industry benchmark, labelled as such on the page.
+Replace them with real numbers after 30 days of tracked spend.
+
 ## Print & social artwork
 
 ```bash
