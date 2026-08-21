@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flyer (8.5 x 11) &mdash; Miguel's A/C</title>
+<style>
+@font-face{font-family:'Archivo';font-style:normal;font-weight:600 800;font-display:block;
+  src:url('../assets/fonts/archivo-var.woff2') format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 700;font-display:block;
+  src:url('../assets/fonts/inter-var.woff2') format('woff2')}
+
+:root{
+  --navy:#071C38; --navy2:#0D2E58; --brand:#2478C0; --accent:#54A8E4;
+  --ink:#0A2240; --body:#4A5F78; --line:#DFE7F0; --paper:#fff;
+  --display:'Archivo',system-ui,sans-serif; --text:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#8792a3;font-family:var(--text);color:var(--body);
+  -webkit-font-smoothing:antialiased;padding:24px}
+ul{list-style:none}
+h1,h2,h3{font-family:var(--display);color:var(--ink);line-height:1.02;
+  letter-spacing:-.03em;font-weight:800}
+.ic{width:1em;height:1em;flex:none;display:block}
+
+/* Every artboard: exact physical size, bleed included. */
+.sheet{position:relative;overflow:hidden;background:var(--paper);
+  margin:0 auto 24px;box-shadow:0 10px 40px rgba(0,0,0,.35)}
+
+.noprint{max-width:760px;margin:0 auto 24px;background:#fff;border-radius:8px;
+  padding:16px 20px;font-size:14px;line-height:1.6;color:#0A2240}
+.noprint h2{font-size:17px;margin-bottom:6px}
+.noprint code{background:#eef2f7;padding:1px 5px;border-radius:3px;font-size:12px}
+.noprint button{margin-top:10px;background:#2478C0;color:#fff;border:0;border-radius:5px;
+  padding:9px 16px;font:600 14px var(--display);cursor:pointer}
+.noprint button:hover{background:#1B5E99}
+.warn{background:#FFF8E5;border:1px solid #E6C77A;color:#6B4E12;border-radius:6px;
+  padding:10px 14px;margin-top:12px;font-size:13px}
+
+/* Trim/safe guides are screen-only aids. */
+.guide{position:absolute;inset:var(--bleed);border:1px dashed rgba(255,0,80,.55);
+  pointer-events:none;z-index:99}
+.guide::after{content:'trim';position:absolute;top:-14px;left:0;font:600 8px var(--text);
+  color:rgba(255,0,80,.75)}
+body.clean .guide{display:none}
+
+@media print{
+  body{background:none;padding:0}
+  .noprint{display:none}
+  .sheet{box-shadow:none;margin:0;break-after:page}
+  .sheet:last-child{break-after:auto}
+  .guide{display:none}
+}
+
+.sheet--fl{width:8.75in;height:11.25in;--bleed:.125in}
+.fl{position:absolute;inset:0;display:flex;flex-direction:column}
+.fl__hero{flex:none;background:linear-gradient(160deg,#0D2E58,#071C38);color:#fff;
+  padding:.6in .7in .5in;position:relative;overflow:hidden}
+.fl__hero::after{content:'';position:absolute;width:6in;height:6in;right:-2in;top:-2.6in;
+  border-radius:50%;background:radial-gradient(circle,rgba(84,168,228,.24),transparent 68%)}
+.fl__top{display:flex;align-items:center;gap:.24in;position:relative}
+.fl__logo{width:1.35in;height:auto;flex:none}
+.fl__name{font-family:var(--display);font-size:29pt;color:#fff;line-height:.94;letter-spacing:-.035em}
+.fl__tag{color:var(--accent);font:700 8pt/1 var(--display);letter-spacing:.16em;
+  text-transform:uppercase;margin-top:.07in}
+.fl__h1{font-size:34pt;color:#fff;margin-top:.3in;line-height:.98;position:relative;max-width:6.4in}
+.fl__lead{color:#B9CDDF;font-size:11pt;line-height:1.5;margin-top:.14in;max-width:5.5in;position:relative}
+.fl__body{padding:.45in .7in .38in;flex:1;min-height:0;display:flex;flex-direction:column}
+.fl__grid{display:grid;grid-template-columns:1fr 1fr;gap:.23in .4in;margin-bottom:.32in}
+.fl__grid li{display:flex;gap:.16in;align-items:flex-start}
+.fl__grid .ic{font-size:19pt;color:var(--brand);margin-top:1pt}
+.fl__grid b{display:block;font:700 12pt/1.15 var(--display);color:var(--ink)}
+.fl__grid span{display:block;font-size:9pt;color:var(--body);margin-top:2pt;line-height:1.4}
+.fl__why{background:#F3F7FC;border:1px solid var(--line);border-radius:.09in;
+  padding:.22in .28in;margin-bottom:.28in}
+.fl__why h3{font-size:13pt;margin-bottom:.14in}
+.fl__why ul{display:grid;grid-template-columns:1fr 1fr;gap:.1in .3in}
+.fl__why li{display:flex;gap:.1in;align-items:center;font-size:9.5pt;color:var(--ink)}
+.fl__why .ic{font-size:12pt;color:var(--brand)}
+.fl__cta{margin-top:auto;background:var(--navy);border-radius:.09in;padding:.28in .32in;
+  display:flex;align-items:center;justify-content:space-between;gap:.3in;color:#fff}
+.fl__cta small{display:block;font:700 8pt/1 var(--display);letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent)}
+.fl__cta b{display:block;font:800 30pt/1 var(--display);letter-spacing:-.03em;margin-top:.06in}
+.fl__cta p{font-size:8.6pt;color:#AFC4D8;margin-top:.08in}
+.fl__cta .side{text-align:right;font-size:8.4pt;color:#AFC4D8;line-height:1.6;flex:none;white-space:nowrap}
+.fl__foot{padding:.16in .7in .2in;font-size:7.6pt;color:var(--body);
+  display:flex;justify-content:space-between;gap:.2in;border-top:1px solid var(--line)}
+
+@media print{@page{size:8.75in 11.25in;margin:0}}
+</style>
+</head>
+<body>
+<div class="noprint">
+  <h2>Flyer (8.5 x 11)</h2>
+  One Letter page, trim <b>8.5 &times; 11 in</b> with 0.125 in bleed. Prints fine on a home printer too &mdash; just choose <b>Fit to page</b> instead of 100% if your printer cannot do full bleed. Print with <b>margins: None</b>, <b>scale 100%</b>, and <b>Background graphics ON</b>. Text exports as vector, so there is no resolution limit. The dashed line is the trim edge &mdash; keep anything that must survive the cut inside it.<div class="warn"><b>Do not send to a printer yet.</b> The contractor license renders as a blank line because <code>data.py</code> still has the placeholder. California requires the real number on contractor advertising (B&amp;P Code &sect;7030.5). Fill in <code>BUSINESS["license"]</code> and re-run <code>python3 marketing.py</code>.</div>
+  <button onclick="document.body.classList.toggle('clean')">Toggle trim guides</button>
+  <button onclick="window.print()">Print / Save as PDF</button>
+</div>
+
+<section class="sheet sheet--fl">
+  <div class="guide"></div>
+  <div class="fl">
+    <header class="fl__hero">
+      <div class="fl__top">
+        <img class="fl__logo" src="../assets/img/logo-print.png" alt="Miguel's A/C">
+        <div>
+          <div class="fl__name">MIGUEL'S A/C</div>
+          <div class="fl__tag">Trusted Locally &middot; Inland Empire &amp; LA</div>
+        </div>
+      </div>
+      <h1 class="fl__h1">Your house is hot.<br>We fix that today.</h1>
+      <p class="fl__lead">Same-day air conditioning repair across the Inland Empire and
+      Los Angeles County. A person answers the phone, a stocked truck shows up, and you
+      get the price before any work starts.</p>
+    </header>
+
+    <div class="fl__body">
+      <ul class="fl__grid"><li><svg class="ic " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M12 2l-3 3M12 2l3 3M12 22l-3-3M12 22l3-3M2.7 7l17.3 10M2.7 17L20 7"/></svg><div><b>AC repair</b><span>Same-day, most calls</span></div></li><li><svg class="ic " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="8" rx="1.5"/><path d="M7 17v2M12 17v3M17 17v2M6 9h12"/></svg><div><b>New systems</b><span>Sized right, permitted</span></div></li><li><svg class="ic " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0 5.3 5.3l-8.5 8.5a2.8 2.8 0 0 1-4-4l8.5-8.5a4 4 0 0 0-1.3-1.3z"/><path d="M14.7 6.3 18 3l3 3-3.3 3.3"/></svg><div><b>Maintenance</b><span>Two tune-ups a year</span></div></li><li><svg class="ic " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s5 5.5 5 10a5 5 0 0 1-10 0c0-1.5.6-2.9 1.4-4C9 10 12 8 12 2z"/></svg><div><b>Heating</b><span>Furnaces and heat pumps</span></div></li><li><svg class="ic " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v10H3zM14 9h4l3 3-3 3h-4"/><path d="M6 7v10M9 7v10"/></svg><div><b>Ductwork</b><span>Testing, sealing, replacement</span></div></li><li><svg class="ic " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c0-9 6-14 16-14 0 10-5 15-14 15H4v-1z"/><path d="M9 15c2-3 5-5 8-6"/></svg><div><b>Air quality</b><span>Filtration and ventilation</span></div></li></ul>
+
+      <div class="fl__why">
+        <h3>Why neighbors call us back</h3>
+        <ul><li><svg class="ic " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"/></svg><span>Same-day service on most calls</span></li><li><svg class="ic " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"/></svg><span>No overtime or weekend charges</span></li><li><svg class="ic " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"/></svg><span>Flat-rate quote before work starts</span></li><li><svg class="ic " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5 5L20 6"/></svg><span>1-year parts and labor warranty</span></li></ul>
+      </div>
+
+      <div class="fl__cta">
+        <div>
+          <small>Call or text</small>
+          <b>(909) 228-7653</b>
+          <p>Mon–Sat, 7:00am – 8:00pm &middot; Emergency service available after hours</p>
+        </div>
+        <div class="side">miguelguardadohvac@gmail.com<br>matthewgomez1098-maker.github.io/miguels-ac</div>
+      </div>
+    </div>
+
+    <footer class="fl__foot">
+      <span>CSLB Lic. # ____________</span>
+      <span>Inland Empire &amp; Los Angeles County &middot; No travel surcharge</span>
+    </footer>
+  </div>
+</section>
+
+</body>
+</html>

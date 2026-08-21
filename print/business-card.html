@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business card &mdash; Miguel's A/C</title>
+<style>
+@font-face{font-family:'Archivo';font-style:normal;font-weight:600 800;font-display:block;
+  src:url('../assets/fonts/archivo-var.woff2') format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 700;font-display:block;
+  src:url('../assets/fonts/inter-var.woff2') format('woff2')}
+
+:root{
+  --navy:#071C38; --navy2:#0D2E58; --brand:#2478C0; --accent:#54A8E4;
+  --ink:#0A2240; --body:#4A5F78; --line:#DFE7F0; --paper:#fff;
+  --display:'Archivo',system-ui,sans-serif; --text:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#8792a3;font-family:var(--text);color:var(--body);
+  -webkit-font-smoothing:antialiased;padding:24px}
+ul{list-style:none}
+h1,h2,h3{font-family:var(--display);color:var(--ink);line-height:1.02;
+  letter-spacing:-.03em;font-weight:800}
+.ic{width:1em;height:1em;flex:none;display:block}
+
+/* Every artboard: exact physical size, bleed included. */
+.sheet{position:relative;overflow:hidden;background:var(--paper);
+  margin:0 auto 24px;box-shadow:0 10px 40px rgba(0,0,0,.35)}
+
+.noprint{max-width:760px;margin:0 auto 24px;background:#fff;border-radius:8px;
+  padding:16px 20px;font-size:14px;line-height:1.6;color:#0A2240}
+.noprint h2{font-size:17px;margin-bottom:6px}
+.noprint code{background:#eef2f7;padding:1px 5px;border-radius:3px;font-size:12px}
+.noprint button{margin-top:10px;background:#2478C0;color:#fff;border:0;border-radius:5px;
+  padding:9px 16px;font:600 14px var(--display);cursor:pointer}
+.noprint button:hover{background:#1B5E99}
+.warn{background:#FFF8E5;border:1px solid #E6C77A;color:#6B4E12;border-radius:6px;
+  padding:10px 14px;margin-top:12px;font-size:13px}
+
+/* Trim/safe guides are screen-only aids. */
+.guide{position:absolute;inset:var(--bleed);border:1px dashed rgba(255,0,80,.55);
+  pointer-events:none;z-index:99}
+.guide::after{content:'trim';position:absolute;top:-14px;left:0;font:600 8px var(--text);
+  color:rgba(255,0,80,.75)}
+body.clean .guide{display:none}
+
+@media print{
+  body{background:none;padding:0}
+  .noprint{display:none}
+  .sheet{box-shadow:none;margin:0;break-after:page}
+  .sheet:last-child{break-after:auto}
+  .guide{display:none}
+}
+
+.sheet--bc{width:3.75in;height:2.25in;--bleed:.125in}
+.bc{position:absolute;inset:0;padding:.3in .32in;display:flex}
+.bc--front{background:linear-gradient(150deg,#0D2E58,#071C38);color:#fff;
+  align-items:center;gap:.22in}
+.bc__logo{width:1.02in;height:auto;flex:none}
+.bc__name{font-family:var(--display);font-size:19pt;color:#fff;line-height:.95;
+  letter-spacing:-.035em}
+.bc__tag{color:var(--accent);font:700 6.4pt/1 var(--display);letter-spacing:.15em;
+  text-transform:uppercase;margin-top:.055in}
+.bc__svc{color:#AFC4D8;font-size:7.1pt;margin-top:.1in;line-height:1.4}
+.bc__phone{margin-top:.11in;font:800 13pt/1 var(--display);color:var(--accent);
+  letter-spacing:-.02em}
+
+.bc--back{background:#fff;flex-direction:column;justify-content:center}
+.bc--back .contact{display:grid;gap:.085in}
+.bc--back .contact li{display:flex;gap:.1in;align-items:center;color:var(--ink);font-size:8pt}
+.bc--back .contact .ic{font-size:10.5pt;color:var(--brand)}
+.bc--back .contact b{font:800 12.5pt/1 var(--display);letter-spacing:-.02em}
+.bc__head{font-family:var(--display);font-size:12.5pt;color:var(--ink);margin-bottom:.04in}
+.bc__sub{font-size:7.4pt;color:var(--body);margin-bottom:.16in;line-height:1.4}
+.bc__foot{margin-top:.16in;padding-top:.1in;border-top:1px solid var(--line);
+  font-size:6.4pt;color:var(--body);display:flex;justify-content:space-between;gap:.1in}
+
+@media print{@page{size:3.75in 2.25in;margin:0}}
+</style>
+</head>
+<body>
+<div class="noprint">
+  <h2>Business card</h2>
+  Front, then back. Trim <b>3.5 &times; 2 in</b> with 0.125 in bleed. Keep text at least 0.125 in inside the dashed line. Print with <b>margins: None</b>, <b>scale 100%</b>, and <b>Background graphics ON</b>. Text exports as vector, so there is no resolution limit. The dashed line is the trim edge &mdash; keep anything that must survive the cut inside it.<div class="warn"><b>Do not send to a printer yet.</b> The contractor license renders as a blank line because <code>data.py</code> still has the placeholder. California requires the real number on contractor advertising (B&amp;P Code &sect;7030.5). Fill in <code>BUSINESS["license"]</code> and re-run <code>python3 marketing.py</code>.</div>
+  <button onclick="document.body.classList.toggle('clean')">Toggle trim guides</button>
+  <button onclick="window.print()">Print / Save as PDF</button>
+</div>
+
+<section class="sheet sheet--bc">
+  <div class="guide"></div>
+  <div class="bc bc--front">
+    <img class="bc__logo" src="../assets/img/logo-print.png" alt="Miguel's A/C">
+    <div>
+      <div class="bc__name">MIGUEL'S<br>A/C</div>
+      <div class="bc__tag">Trusted Locally</div>
+      <div class="bc__svc">Repair &middot; Install &middot; Maintenance</div>
+      <div class="bc__phone">(909) 228-7653</div>
+    </div>
+  </div>
+</section>
+
+<section class="sheet sheet--bc">
+  <div class="guide"></div>
+  <div class="bc bc--back">
+    <div class="bc__head">Miguel Guardado</div>
+    <p class="bc__sub">Same-day AC repair &mdash; Inland Empire &amp; Los Angeles County</p>
+    <ul class="contact ">
+  <li><svg class="ic " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h4l2 5-2.5 1.5a12 12 0 0 0 5 5L16 12l5 2v4a2 2 0 0 1-2.2 2A17 17 0 0 1 4 5.2 2 2 0 0 1 6 3z"/></svg><b>(909) 228-7653</b></li>
+  <li><svg class="ic " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7L22 6"/></svg><span>miguelguardadohvac@gmail.com</span></li>
+  <li><svg class="ic " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg><span>matthewgomez1098-maker.github.io/miguels-ac</span></li>
+</ul>
+    <div class="bc__foot"><span>CSLB Lic. # ____________</span><span>No overtime charges</span></div>
+  </div>
+</section>
+
+</body>
+</html>

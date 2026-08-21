@@ -78,6 +78,43 @@ The bundle is a preview, not the deployable site. It differs deliberately:
 
 Re-run `build.py` before `bundle.py` — the bundler reads the generated pages.
 
+## Print & social artwork
+
+```bash
+python3 marketing.py
+```
+
+Writes into `print/`:
+
+| File | Size | Notes |
+| --- | --- | --- |
+| `door-hanger.html` | 4.25 x 11 in | Front + back, 0.125 in bleed, die-cut guide |
+| `business-card.html` | 3.5 x 2 in | Front + back, bleed + safe area |
+| `flyer.html` | 8.5 x 11 in | One-page leave-behind |
+| `instagram.html` | 1080x1350, 1080x1920 | Two feed posts, one story, caption included |
+
+Open a file, Cmd-P, **Save as PDF**, margins **None**, scale **100%**,
+**Background graphics ON**. Text exports as vector, so there is no DPI limit —
+this is why the artwork is HTML rather than an exported JPEG.
+
+Contact details come from `data.py`. That is deliberate: the first set of
+artwork carried three different phone numbers and a misspelled domain because
+each piece was edited by hand. Change `BUSINESS` once and every piece follows.
+
+**Two things to fix before a print run:**
+
+1. The **contractor license** renders as a blank line while `data.py` holds the
+   placeholder, and each page shows a warning saying so. California requires the
+   real number on contractor advertising (B&P Code §7030.5) — a blank is
+   awkward, a fabricated one is illegal.
+2. The **website URL** is currently the GitHub Pages address. It works, but
+   `matthewgomez1098-maker.github.io/miguels-ac` on a business card looks
+   temporary. Buy the domain first if you can; it is the `SITE` constant at the
+   top of `marketing.py`.
+
+The door hanger's QR code points at whatever `SITE` is set to, and is generated
+as inline SVG so it stays sharp at any size.
+
 ## Files
 
 | File | What it is |
@@ -86,6 +123,7 @@ Re-run `build.py` before `bundle.py` — the bundler reads the generated pages.
 | `build.py` | Templates + page assembly. Run it to regenerate |
 | `serve.py` | Local preview server |
 | `bundle.py` | Bundles all 43 pages into one shareable file |
+| `marketing.py` | Generates the print + Instagram artwork into `print/` |
 | `assets/css/style.css` | The entire stylesheet (hand-written, ~700 lines) |
 | `assets/js/main.js` | Nav, mobile drawer, FAQ accordion, scroll reveal, form handling |
 | `assets/img/` | Generated logo assets — do not edit directly |
