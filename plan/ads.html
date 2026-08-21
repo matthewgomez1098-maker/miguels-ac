@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Getting more customers — Miguel's A/C advertising plan</title>
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png">
+<style>
+@font-face{font-family:'Archivo';font-style:normal;font-weight:600 800;font-display:swap;
+  src:url('../assets/fonts/archivo-var.woff2') format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 700;font-display:swap;
+  src:url('../assets/fonts/inter-var.woff2') format('woff2')}
+
+/* Light palette is the complete set; dark redefines only tokens, under both the
+   OS media query and the explicit theme stamp. */
+:root{
+  color-scheme:light;
+  --surface:#F7F9FC; --card:#FFFFFF; --sunk:#EEF3F9;
+  --ink:#0A2240; --body:#41566E; --muted:#63758C; --line:#DCE5F0;
+  --brand:#2478C0; --accent:#1B5E99; --navy:#071C38;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a;
+  --good:#1baf7a; --warn:#eda100; --bad:#e34948;
+  --grid:rgba(10,34,64,.10);
+  --display:'Archivo',system-ui,sans-serif; --text:'Inter',system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --surface:#0B1A2E; --card:#0F2338; --sunk:#132B44;
+    --ink:#F2F7FC; --body:#B4C6D8; --muted:#8CA3BB; --line:#1E3A57;
+    --brand:#54A8E4; --accent:#7FC3EF; --navy:#050F1E;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70;
+    --good:#199e70; --warn:#c98500; --bad:#e66767;
+    --grid:rgba(180,198,216,.14);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --surface:#0B1A2E; --card:#0F2338; --sunk:#132B44;
+  --ink:#F2F7FC; --body:#B4C6D8; --muted:#8CA3BB; --line:#1E3A57;
+  --brand:#54A8E4; --accent:#7FC3EF; --navy:#050F1E;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70;
+  --good:#199e70; --warn:#c98500; --bad:#e66767;
+  --grid:rgba(180,198,216,.14);
+}
+
+*{box-sizing:border-box;margin:0}
+body{background:var(--surface);color:var(--body);font-family:var(--text);
+  line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--display);color:var(--ink);font-weight:800;
+  line-height:1.1;letter-spacing:-.025em;text-wrap:balance}
+ul,ol{list-style:none;padding:0}
+a{color:var(--brand)}
+:focus-visible{outline:3px solid var(--brand);outline-offset:3px}
+
+.wrap{max-width:1120px;margin-inline:auto;padding-inline:clamp(1rem,4vw,2.5rem)}
+.sec{padding-block:clamp(2.75rem,5vw,4.25rem);border-top:1px solid var(--line)}
+.sec:first-of-type{border-top:0}
+.eyebrow{font-family:var(--display);font-size:.75rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--brand);margin-bottom:.6rem}
+.h1{font-size:clamp(2rem,4.6vw,3.1rem)}
+.h2{font-size:clamp(1.5rem,2.8vw,2.1rem)}
+.h3{font-size:clamp(1.05rem,1.5vw,1.25rem)}
+.lead{font-size:clamp(1rem,1.25vw,1.125rem);max-width:62ch}
+.sec > p, .sec > .lead{margin-top:.85rem}
+.muted{color:var(--muted);font-size:.875rem}
+
+/* header */
+.top{background:var(--navy);color:#B9CDDF;padding-block:clamp(2.5rem,5vw,3.75rem)}
+.top h1{color:#fff}
+.top .lead{color:#B9CDDF;margin-top:1rem}
+.top .eyebrow{color:#54A8E4}
+.brandrow{display:flex;align-items:center;gap:.7rem;margin-bottom:1.75rem}
+.brandrow img{width:44px;height:auto}
+.brandrow b{font-family:var(--display);color:#fff;font-size:1.05rem;letter-spacing:-.02em}
+.themebtn{margin-left:auto;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);
+  color:#fff;border-radius:6px;padding:.4rem .7rem;font:600 .75rem var(--text);cursor:pointer}
+.themebtn:hover{background:rgba(255,255,255,.16)}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:1.35rem 1.4rem}
+.grid{display:grid;gap:1rem}
+@media(min-width:720px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}}
+
+/* phase 0 checklist */
+.steps{counter-reset:s;display:grid;gap:.9rem;margin-top:1.75rem}
+.step{display:flex;gap:1rem;background:var(--card);border:1px solid var(--line);
+  border-radius:10px;padding:1.1rem 1.2rem}
+.step::before{counter-increment:s;content:counter(s);flex:none;width:2rem;height:2rem;
+  border-radius:6px;background:var(--sunk);color:var(--brand);
+  font:800 .9rem/2rem var(--display);text-align:center}
+.step h4{font-size:1rem;margin-bottom:.2rem}
+.step p{font-size:.9rem}
+.step .why{display:block;margin-top:.45rem;font-size:.82rem;color:var(--muted);
+  border-left:2px solid var(--line);padding-left:.7rem}
+.done{color:var(--good);font-weight:700}
+
+/* charts */
+figure{margin:1.75rem 0 0;background:var(--card);border:1px solid var(--line);
+  border-radius:10px;padding:1.25rem 1.3rem 1rem}
+figcaption{font-size:.82rem;color:var(--muted);margin-top:.85rem;padding-top:.75rem;
+  border-top:1px solid var(--line)}
+.figtitle{font-family:var(--display);font-weight:700;color:var(--ink);font-size:1rem;margin-bottom:.15rem}
+.figsub{font-size:.82rem;color:var(--muted);margin-bottom:1rem}
+.chartbox{overflow-x:auto}
+svg{display:block;max-width:100%}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;margin-bottom:.9rem;font-size:.8rem;color:var(--body)}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:.4rem;
+  vertical-align:-1px}
+text{font-family:var(--text)}
+.axis{fill:var(--muted);font-size:11px}
+.axlabel{fill:var(--muted);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+.dotlabel{fill:var(--ink);font-size:11.5px;font-weight:600}
+.gridline{stroke:var(--grid);stroke-width:1}
+.mark{transition:opacity .12s}
+.chartbox:hover .mark{opacity:.45}
+.chartbox .mark:hover{opacity:1}
+
+/* table view — the relief for the light-mode contrast warning */
+details.tbl{margin-top:.9rem}
+details.tbl summary{cursor:pointer;font-size:.82rem;color:var(--brand);font-weight:600}
+table{border-collapse:collapse;width:100%;margin-top:.75rem;font-size:.84rem}
+th,td{text-align:left;padding:.45rem .6rem;border-bottom:1px solid var(--line)}
+th{font-family:var(--display);color:var(--ink);font-size:.78rem;letter-spacing:.04em;
+  text-transform:uppercase}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+
+/* calculator */
+.calc{display:grid;gap:1.25rem}
+@media(min-width:860px){.calc{grid-template-columns:320px 1fr}}
+.ctrl{display:grid;gap:.9rem}
+.ctrl label{display:block;font-size:.82rem;font-weight:600;color:var(--ink);margin-bottom:.3rem}
+.ctrl .row{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem}
+.ctrl output{font-family:var(--display);font-weight:700;color:var(--brand);
+  font-variant-numeric:tabular-nums;font-size:.95rem}
+input[type=range]{width:100%;accent-color:var(--brand)}
+.tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem}
+@media(min-width:520px){.tiles{grid-template-columns:repeat(4,1fr)}}
+.tile{background:var(--sunk);border-radius:8px;padding:.85rem .9rem}
+.tile b{display:block;font-family:var(--display);font-size:clamp(1.25rem,2.4vw,1.6rem);
+  color:var(--ink);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.tile span{display:block;font-size:.74rem;color:var(--muted);margin-top:.2rem;line-height:1.35}
+.verdict{margin-top:.9rem;padding:.8rem .95rem;border-radius:8px;font-size:.88rem;
+  border:1px solid var(--line);background:var(--sunk)}
+.verdict[data-state="good"]{border-color:color-mix(in srgb,var(--good) 45%,transparent)}
+.verdict[data-state="bad"]{border-color:color-mix(in srgb,var(--bad) 45%,transparent)}
+.verdict b{color:var(--ink);font-family:var(--display)}
+
+/* structure lists */
+.kv{display:grid;gap:.55rem;margin-top:1rem}
+.kv li{display:grid;grid-template-columns:minmax(9rem,auto) 1fr;gap:.4rem 1rem;
+  padding-bottom:.55rem;border-bottom:1px solid var(--line);font-size:.9rem}
+.kv b{font-family:var(--display);color:var(--ink);font-weight:700;font-size:.88rem}
+.kv code{background:var(--sunk);padding:.05rem .35rem;border-radius:3px;font-size:.82em}
+.pill{display:inline-block;background:var(--sunk);border:1px solid var(--line);
+  border-radius:999px;padding:.15rem .6rem;font-size:.76rem;margin:.15rem .2rem .15rem 0}
+.note{background:var(--sunk);border:1px solid var(--line);border-left:3px solid var(--brand);
+  border-radius:8px;padding:.9rem 1.05rem;margin-top:1.25rem;font-size:.88rem}
+.note b{color:var(--ink);font-family:var(--display)}
+.warnbox{background:color-mix(in srgb,var(--warn) 12%,var(--card));
+  border:1px solid color-mix(in srgb,var(--warn) 45%,transparent);
+  border-radius:8px;padding:.9rem 1.05rem;margin-top:1.25rem;font-size:.88rem}
+.warnbox b{color:var(--ink);font-family:var(--display)}
+footer{background:var(--navy);color:#8CA3BB;font-size:.82rem;padding-block:1.75rem;margin-top:2rem}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brandrow">
+      <img src="../assets/img/logo-mark.webp" alt="">
+      <b>Miguel's A/C</b>
+      <button class="themebtn" id="themebtn" type="button">Dark / light</button>
+    </div>
+    <p class="eyebrow">Customer acquisition plan</p>
+    <h1 class="h1">Getting more customers</h1>
+    <p class="lead">Where the advertising money goes, in what order, and how to tell
+    within 30 days whether it is working. Built around one fact about this trade:
+    almost nobody shops for an HVAC contractor until something breaks — so the job is
+    to be the most findable, most credible option at the exact moment it does.</p>
+  </div>
+</header>
+
+<main>
+
+<section class="sec wrap">
+  <p class="eyebrow">The strategy in one line</p>
+  <h2 class="h2">Own the free map results first. Buy the highest-intent clicks second.
+  Use Meta for the off-season and for people who already know you.</h2>
+  <p class="lead">Spending on ads before the free foundations are in place is the most
+  common way small contractors waste money. A paid click that lands on a business with
+  four reviews converts a fraction as well as the same click landing on one with
+  sixty — you pay the same either way.</p>
+</section>
+
+<section class="sec wrap">
+  <p class="eyebrow">Phase 0</p>
+  <h2 class="h2">Do these before spending a dollar</h2>
+  <p class="lead">None of this costs money. All of it raises the return on every dollar
+  spent later, and the first two are the highest-value work on this entire page.</p>
+
+  <ol class="steps">
+    <li class="step">
+      <div>
+        <h4>Claim and finish the Google Business Profile</h4>
+        <p>Verify the business, set the primary category to <b>HVAC contractor</b>, add
+        service areas for every city, upload real job photos, and set hours.</p>
+        <span class="why">Why first: the map pack sits above every paid result. For
+        "ac repair near me" it is the majority of clicks, and it costs nothing. No ad
+        campaign outperforms owning this.</span>
+      </div>
+    </li>
+    <li class="step">
+      <div>
+        <h4>Get to 25+ real reviews, then keep going</h4>
+        <p>Text every finished job a direct review link the same day, while the house is
+        cold and the customer is happy. Aim for a steady trickle, not a burst.</p>
+        <span class="why">Why: review count and recency are among the strongest local
+        ranking factors, and they lift conversion on every other channel at once.
+        <b>Do not buy reviews</b> — the FTC treats fake reviews as illegal, and Google
+        removes them.</span>
+      </div>
+    </li>
+    <li class="step">
+      <div>
+        <h4>Put the real license number on everything</h4>
+        <p>The website and all four print pieces currently show a blank line where
+        <span class="pill">CSLB Lic. #</span> goes.</p>
+        <span class="why">Why: California requires it on contractor advertising (B&amp;P
+        Code §7030.5). Google Local Services Ads will not approve the account without a
+        verified license either — so this blocks the single best paid channel.</span>
+      </div>
+    </li>
+    <li class="step">
+      <div>
+        <h4>Set up call tracking before the first ad runs</h4>
+        <p>A tracking number that forwards to Miguel's phone, plus Google Analytics and
+        the Meta pixel on the site.</p>
+        <span class="why">Why: this trade converts on the phone, not on forms. Without
+        call tracking you cannot tell which channel produced a booking, and every budget
+        decision after month one becomes guesswork.</span>
+      </div>
+    </li>
+    <li class="step">
+      <div>
+        <h4>Buy the domain</h4>
+        <p>The site is live at the GitHub Pages address. A real domain makes the ads,
+        the business card and the profile all point somewhere that looks permanent.</p>
+        <span class="why">Why: Google Business Profile weighs a matching website, and
+        a github.io URL on a business card reads as temporary to a homeowner.</span>
+      </div>
+    </li>
+    <li class="step">
+      <div>
+        <h4><span class="done">Done</span> — the website and the print set</h4>
+        <p>43 pages with a city page for each of the 29 service areas, plus door hanger,
+        business card, flyer and Instagram artwork.</p>
+        <span class="why">The city pages are what let search ads send someone in Fontana
+        to a Fontana page instead of a generic homepage. That lifts Quality Score, which
+        lowers what you pay per click.</span>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<section class="sec wrap">
+  <p class="eyebrow">Where to spend</p>
+  <h2 class="h2">Every channel, by how ready the person is to buy</h2>
+  <p class="lead">The horizontal axis is intent — how close someone is to booking when
+  they meet you there. The vertical axis is what a lead costs. Bubble size is roughly how
+  much volume the channel can supply. The best channels sit bottom-right: ready to buy,
+  cheap to reach.</p>
+
+  <figure>
+    <div class="figtitle">Channel map — intent versus cost per lead</div>
+    <div class="figsub">Bubble area ≈ available volume in the Inland Empire / LA market</div>
+    <div class="legend" id="chan-legend"></div>
+    <div class="chartbox"><svg id="chan" role="img"
+      aria-label="Scatter plot of advertising channels by buyer intent and cost per lead"></svg></div>
+    <details class="tbl">
+      <summary>Show as a table</summary>
+      <div id="chan-table"></div>
+    </details>
+    <figcaption><b>These cost figures are industry benchmarks, not Miguel's numbers.</b>
+    HVAC advertising costs swing hard by season and city — a click that costs $12 in
+    March can cost $40 in a July heat wave. Treat them as a starting hypothesis and
+    replace them with real numbers after 30 days of tracked spend.</figcaption>
+  </figure>
+</section>
+
+<section class="sec wrap">
+  <p class="eyebrow">When to spend</p>
+  <h2 class="h2">Seasonality decides the budget, not the calendar</h2>
+  <p class="lead">HVAC demand in the Inland Empire is violently seasonal. Spending evenly
+  across twelve months means overpaying in February and running out of budget in the week
+  that matters most. Both series below are shares of an annual total, so they sit on one
+  scale — the gap between them is the whole point.</p>
+
+  <figure>
+    <div class="figtitle">Demand versus recommended ad spend, by month</div>
+    <div class="figsub">Each series as a percentage of its own annual total</div>
+    <div class="legend" id="seas-legend"></div>
+    <div class="chartbox"><svg id="seas" role="img"
+      aria-label="Grouped bar chart comparing monthly share of demand against share of ad budget"></svg></div>
+    <details class="tbl">
+      <summary>Show as a table</summary>
+      <div id="seas-table"></div>
+    </details>
+    <figcaption>Spend leads demand by roughly a month: campaigns need time to gather data
+    and the first heat wave is when competitors' budgets arrive. The March–May bump is
+    deliberate — that is when tune-ups and maintenance plans sell, and a plan member in
+    May is a customer who does not call a competitor in August.</figcaption>
+  </figure>
+</section>
+
+<section class="sec wrap">
+  <p class="eyebrow">The math</p>
+  <h2 class="h2">What a lead is allowed to cost</h2>
+  <p class="lead">Move the sliders to Miguel's real numbers. This is the calculation that
+  decides whether a channel stays or gets cut — not whether the ads "look busy".</p>
+
+  <div class="card" style="margin-top:1.75rem">
+    <div class="calc">
+      <div class="ctrl">
+        <div>
+          <div class="row"><label for="spend">Monthly ad spend</label><output id="o-spend"></output></div>
+          <input type="range" id="spend" min="500" max="8000" step="100" value="2000">
+        </div>
+        <div>
+          <div class="row"><label for="cpl">Cost per lead</label><output id="o-cpl"></output></div>
+          <input type="range" id="cpl" min="15" max="150" step="5" value="60">
+        </div>
+        <div>
+          <div class="row"><label for="close">Leads that become jobs</label><output id="o-close"></output></div>
+          <input type="range" id="close" min="10" max="90" step="5" value="45">
+        </div>
+        <div>
+          <div class="row"><label for="ticket">Average job value</label><output id="o-ticket"></output></div>
+          <input type="range" id="ticket" min="150" max="3000" step="50" value="450">
+        </div>
+        <div>
+          <div class="row"><label for="margin">Gross margin</label><output id="o-margin"></output></div>
+          <input type="range" id="margin" min="20" max="70" step="5" value="45">
+        </div>
+        <p class="muted">Defaults are conservative benchmarks for a repair-weighted mix.
+        Replacements run far higher per job and change this picture completely.</p>
+      </div>
+
+      <div>
+        <div class="tiles">
+          <div class="tile"><b id="t-leads">—</b><span>Leads a month</span></div>
+          <div class="tile"><b id="t-jobs">—</b><span>Booked jobs</span></div>
+          <div class="tile"><b id="t-cac">—</b><span>Cost per booked job</span></div>
+          <div class="tile"><b id="t-roas">—</b><span>Return on ad spend</span></div>
+        </div>
+        <div class="chartbox" style="margin-top:1rem">
+          <svg id="funnel" role="img" aria-label="Funnel from ad spend to gross profit"></svg>
+        </div>
+        <div class="verdict" id="verdict"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note"><b>The number that matters is cost per booked job, not cost per click.</b>
+  A channel with expensive clicks that books half of them beats a cheap channel that books
+  one in twenty. This is also why call tracking is Phase 0 — without it you are optimising
+  the wrong end of the funnel.</div>
+</section>
+
+<section class="sec wrap">
+  <p class="eyebrow">Google</p>
+  <h2 class="h2">How to structure the Google side</h2>
+  <p class="lead">Three products, in the order they should be switched on. Do not start
+  all three at once — you will not be able to tell which one worked.</p>
+
+  <div class="grid g3" style="margin-top:1.75rem">
+    <div class="card">
+      <h3 class="h3">1. Local Services Ads</h3>
+      <p class="muted" style="margin:.35rem 0 .8rem">Pay per lead · Google Guaranteed badge</p>
+      <p style="font-size:.9rem">Sits above everything, including search ads. You pay per
+      lead rather than per click, and you can dispute leads that were not real. Requires
+      license and insurance verification plus a background check.</p>
+      <div class="note" style="margin-top:.9rem;font-size:.82rem"><b>Start here.</b> Highest
+      intent, and the badge does credibility work that a new business otherwise has to buy
+      with reviews. Blocked until the license number is real.</div>
+    </div>
+    <div class="card">
+      <h3 class="h3">2. Search ads</h3>
+      <p class="muted" style="margin:.35rem 0 .8rem">Pay per click · highest control</p>
+      <p style="font-size:.9rem">Catches the "my AC just died" searches LSA misses. Expensive
+      in summer, so it lives or dies on tight targeting and negative keywords.</p>
+      <div class="note" style="margin-top:.9rem;font-size:.82rem"><b>Add in month two,</b>
+      once LSA has produced a baseline cost per booked job to compare against.</div>
+    </div>
+    <div class="card">
+      <h3 class="h3">3. Performance Max</h3>
+      <p class="muted" style="margin:.35rem 0 .8rem">Automated · lowest control</p>
+      <p style="font-size:.9rem">Google spreads budget across YouTube, Display, Gmail and
+      Maps automatically.</p>
+      <div class="warnbox" style="margin-top:.9rem;font-size:.82rem"><b>Not yet.</b> It
+      needs conversion data to aim with. Run it before you have that and it spends the
+      budget learning what the other two already know.</div>
+    </div>
+  </div>
+
+  <h3 class="h3" style="margin-top:2.25rem">Search campaign skeleton</h3>
+  <ul class="kv">
+    <li><b>Campaign split</b><span>One per region, so budget can follow the heat:
+      <span class="pill">Inland Empire</span><span class="pill">San Gabriel Valley</span>
+      <span class="pill">LA County</span></span></li>
+    <li><b>Ad groups</b><span>One per job type, never mixed — repair, installation,
+      heat pump, mini-split, maintenance. Each points at its matching service page.</span></li>
+    <li><b>Landing pages</b><span>City page for geo terms, service page for job terms.
+      Never the homepage — relevance is a Quality Score input, and Quality Score is a
+      direct discount on cost per click.</span></li>
+    <li><b>Keywords</b><span><code>ac repair near me</code> · <code>emergency ac repair [city]</code>
+      · <code>ac not blowing cold</code> · <code>hvac contractor [city]</code> ·
+      <code>ac replacement quote</code></span></li>
+    <li><b>Negatives</b><span><code>jobs</code> <code>hiring</code> <code>salary</code>
+      <code>diy</code> <code>how to</code> <code>parts</code> <code>free</code>
+      <code>training</code> <code>window unit</code> <code>portable</code> — add to a shared
+      list and review weekly for the first month</span></li>
+    <li><b>Targeting</b><span>Radius around each service area, set to
+      <b>presence</b> — people <i>in</i> the area, not people merely interested in it.
+      That one setting stops budget leaking to other states.</span></li>
+    <li><b>Schedule</b><span>Bid up during hours someone actually answers. An emergency
+      click at 11pm that reaches voicemail is money burned.</span></li>
+    <li><b>Extensions</b><span>Call, location, and sitelinks to the service pages. On
+      mobile, call-only ads for emergency terms — the goal is a ringing phone.</span></li>
+    <li><b>Bidding</b><span>Start on Maximise Clicks with a cap to gather data, then move
+      to Maximise Conversions once call tracking has fed in ~30 conversions.</span></li>
+  </ul>
+</section>
+
+<section class="sec wrap">
+  <p class="eyebrow">Meta</p>
+  <h2 class="h2">How to structure Facebook and Instagram</h2>
+  <p class="lead">Nobody scrolling Instagram is searching for an HVAC contractor. Meta is
+  not for catching demand — it is for building recognition before the breakdown, and for
+  staying in front of people who already visited the site.</p>
+
+  <div class="grid g3" style="margin-top:1.75rem">
+    <div class="card">
+      <h3 class="h3">Retargeting</h3>
+      <p class="muted" style="margin:.35rem 0 .8rem">Smallest budget, best return</p>
+      <p style="font-size:.9rem">Anyone who visited the site or engaged with the page in
+      the last 30 days. They already know the name.</p>
+      <p style="font-size:.85rem;margin-top:.7rem"><b style="color:var(--ink)">Creative:</b>
+      the "Broken A/C? Call us today" story, plus a real before/after from a job.</p>
+    </div>
+    <div class="card">
+      <h3 class="h3">Local awareness</h3>
+      <p class="muted" style="margin:.35rem 0 .8rem">Homeowners, tight radius</p>
+      <p style="font-size:.9rem">Radius around the cities being worked that week.
+      Homeowner-leaning targeting, ages 30–65.</p>
+      <p style="font-size:.85rem;margin-top:.7rem"><b style="color:var(--ink)">Creative:</b>
+      short vertical video of an actual repair. Face, truck, hands, a fixed unit. This
+      out-performs a designed graphic almost every time.</p>
+    </div>
+    <div class="card">
+      <h3 class="h3">Maintenance plan</h3>
+      <p class="muted" style="margin:.35rem 0 .8rem">Spring and autumn only</p>
+      <p style="font-size:.9rem">Lead form for tune-ups before the season turns. The cheapest
+      customer to acquire is one who is already on a plan.</p>
+      <p style="font-size:.85rem;margin-top:.7rem"><b style="color:var(--ink)">Creative:</b>
+      the "Repair, install, maintain" post, pointed at the maintenance plans page.</p>
+    </div>
+  </div>
+
+  <div class="note"><b>Post organically before paying to boost anything.</b> A page with
+  three posts and no reviews converts badly no matter what it costs to get someone there.
+  Two posts a week — finished jobs, the crew, a genuinely useful tip about filters or
+  thermostats — for a month before the first paid dollar.</div>
+</section>
+
+<section class="sec wrap">
+  <p class="eyebrow">Beyond the big two</p>
+  <h2 class="h2">The rest, honestly assessed</h2>
+  <div class="grid g2" style="margin-top:1.75rem">
+    <div class="card">
+      <h3 class="h3">Worth doing</h3>
+      <ul class="kv" style="margin-top:.8rem">
+        <li><b>Nextdoor</b><span>Neighbourhood recommendations carry unusual weight for
+          trades. Free to claim, cheap to advertise on, and a single recommendation thread
+          can outperform a month of ads.</span></li>
+        <li><b>Referral offer</b><span>An existing customer telling a neighbour is the
+          cheapest lead you will ever get. A standing credit for a referral that books
+          costs a fraction of a paid lead.</span></li>
+        <li><b>Truck and yard signage</b><span>A wrapped truck parked at a job all day is
+          advertising to the exact street being worked. Cheapest cost per impression
+          available to a local trade.</span></li>
+        <li><b>Door hangers</b><span>Already built. Highest return on the streets either
+          side of a job just completed — same houses, same era, same equipment.</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 class="h3">Approach with caution</h3>
+      <ul class="kv" style="margin-top:.8rem">
+        <li><b>Angi / Thumbtack</b><span>Leads are resold to three or four contractors at
+          once, so you are bidding on speed and price against people who already have the
+          same phone number. Useful to fill a slow week, corrosive as a main channel.</span></li>
+        <li><b>Yelp Ads</b><span>Real volume for HVAC, but the contracts are hard to exit
+          and spend is difficult to control. If tried, set a hard monthly cap.</span></li>
+        <li><b>Boosting posts</b><span>The Boost button is not the same as a campaign.
+          It optimises for engagement, which buys likes rather than calls. Use Ads Manager
+          with a Leads or Calls objective.</span></li>
+        <li><b>Buying reviews</b><span>Illegal under FTC rules, and Google removes them.
+          It also puts the Google Business Profile at risk — the one asset here that cannot
+          be replaced with money.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec wrap">
+  <p class="eyebrow">Sequence</p>
+  <h2 class="h2">First 90 days</h2>
+  <p class="lead">Each phase produces the thing the next one needs. Running them in
+  parallel is how budgets get spent without learning anything.</p>
+
+  <figure>
+    <div class="figtitle">Rollout schedule</div>
+    <div class="figsub">Bars show when each workstream is active</div>
+    <div class="legend" id="plan-legend"></div>
+    <div class="chartbox"><svg id="plan" role="img"
+      aria-label="Timeline of the 90-day advertising rollout"></svg></div>
+    <figcaption>The foundation work is unglamorous and it is where the return is. A month
+    spent on the profile, reviews and tracking makes every dollar in months two and three
+    work harder — and there is no way to buy that back later.</figcaption>
+  </figure>
+</section>
+
+<section class="sec wrap">
+  <p class="eyebrow">Reality check</p>
+  <h2 class="h2">What this page is and is not</h2>
+  <p class="lead">Every cost figure here is an industry benchmark for HVAC in Southern
+  California, not a measurement of Miguel's business. They exist to make the plan
+  concrete and to give the calculator sensible defaults — nothing more.</p>
+  <p class="lead" style="margin-top:.85rem">After 30 days of tracked spend, replace every
+  one of them with what actually happened. At that point this becomes a real forecast
+  instead of a sensible starting hypothesis. Until the license number and call tracking
+  are in place, none of the paid channels should be switched on at all.</p>
+</section>
+
+</main>
+
+<footer><div class="wrap">Miguel's A/C — internal planning document. Not linked from the
+site and marked noindex.</div></footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- theme toggle ---------- */
+  var btn = document.getElementById("themebtn");
+  btn.addEventListener("click", function () {
+    var cur = document.documentElement.getAttribute("data-theme");
+    var dark = cur ? cur === "dark"
+      : matchMedia("(prefers-color-scheme: dark)").matches;
+    document.documentElement.setAttribute("data-theme", dark ? "light" : "dark");
+    drawAll();
+  });
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", drawAll);
+
+  var cssv = function (n) {
+    return getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  };
+  var SVGNS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs, text) {
+    var n = document.createElementNS(SVGNS, tag);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    if (text != null) n.textContent = text;
+    return n;
+  }
+  function clear(n) { while (n.firstChild) n.removeChild(n.firstChild); }
+  function money(v) { return "$" + Math.round(v).toLocaleString("en-US"); }
+
+  /* ---------- data ---------- */
+  // tier drives colour; every mark is also direct-labelled, so identity never
+  // depends on colour alone.
+  var CHANNELS = [
+    { n: "Google Business Profile", intent: 95, cpl: 0,   vol: 95, tier: 0, note: "Free. The map pack." },
+    { n: "Local Services Ads",      intent: 92, cpl: 55,  vol: 70, tier: 0, note: "Pay per lead. Needs licence." },
+    { n: "Google Search ads",       intent: 88, cpl: 90,  vol: 85, tier: 1, note: "Pay per click. Pricey in summer." },
+    { n: "Referrals",               intent: 90, cpl: 25,  vol: 30, tier: 0, note: "Cheapest lead there is." },
+    { n: "Nextdoor",                intent: 62, cpl: 38,  vol: 45, tier: 1, note: "Neighbourhood trust." },
+    { n: "Angi / Thumbtack",        intent: 74, cpl: 70,  vol: 55, tier: 2, note: "Leads resold to rivals." },
+    { n: "Yelp Ads",                intent: 68, cpl: 95,  vol: 50, tier: 2, note: "Hard to control spend." },
+    { n: "Meta (FB / Instagram)",   intent: 28, cpl: 32,  vol: 90, tier: 1, note: "Cold. Good for retargeting." },
+    { n: "Door hangers / print",    intent: 18, cpl: 45,  vol: 35, tier: 1, note: "Best next to a finished job." }
+  ];
+  var TIERS = ["Start here", "Add next", "Handle with care"];
+
+  var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  var DEMAND = [6, 5, 6, 7, 9, 12, 15, 14, 10, 6, 5, 5];
+  var BUDGET = [4, 4, 8, 9, 11, 13, 13, 11, 8, 7, 6, 6];
+
+  var PHASES = [
+    { n: "Profile, reviews, licence, tracking", s: 0,  e: 30,  tier: 0 },
+    { n: "Organic posting starts",              s: 14, e: 90,  tier: 0 },
+    { n: "Local Services Ads live",             s: 30, e: 90,  tier: 1 },
+    { n: "Search ads live",                     s: 45, e: 90,  tier: 1 },
+    { n: "Meta retargeting live",               s: 60, e: 90,  tier: 1 },
+    { n: "Review and reallocate budget",        s: 75, e: 90,  tier: 2 }
+  ];
+
+  function tierColor(t) { return cssv(["--s1", "--s2", "--s3"][t]); }
+
+  function legend(id, items) {
+    var box = document.getElementById(id);
+    box.innerHTML = items.map(function (it) {
+      return '<span><i style="background:' + it.c + '"></i>' + it.n + "</span>";
+    }).join("");
+  }
+
+  function tip(svg, x, y, lines) {
+    var pad = 8, lh = 14;
+    var w = Math.max.apply(null, lines.map(function (l) { return l.length * 6.4; })) + pad * 2;
+    var h = lines.length * lh + pad * 2 - 3;
+    var g = el("g", { class: "tip", "pointer-events": "none" });
+    var tx = Math.min(Math.max(x - w / 2, 4), svg.viewBox.baseVal.width - w - 4);
+    var ty = y - h - 12 < 4 ? y + 16 : y - h - 12;
+    g.appendChild(el("rect", { x: tx, y: ty, width: w, height: h, rx: 6,
+      fill: cssv("--card"), stroke: cssv("--line") }));
+    lines.forEach(function (l, i) {
+      var t = el("text", { x: tx + pad, y: ty + pad + 11 + i * lh,
+        fill: i ? cssv("--body") : cssv("--ink"),
+        "font-size": i ? 11 : 12, "font-weight": i ? 400 : 700 }, l);
+      g.appendChild(t);
+    });
+    svg.appendChild(g);
+  }
+  function clearTip(svg) {
+    var t = svg.querySelector(".tip");
+    if (t) t.remove();
+  }
+
+  /* ---------- chart 1: channel map ---------- */
+  function drawChannels() {
+    var svg = document.getElementById("chan");
+    var W = 860, H = 460, m = { t: 18, r: 24, b: 46, l: 62 };
+    clear(svg);
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    svg.setAttribute("width", W); svg.setAttribute("height", H);
+
+    var x = function (v) { return m.l + (v / 100) * (W - m.l - m.r); };
+    var y = function (v) { return H - m.b - (v / 110) * (H - m.t - m.b); };
+
+    [0, 25, 50, 75, 100].forEach(function (v) {
+      svg.appendChild(el("line", { class: "gridline", x1: m.l, x2: W - m.r, y1: y(v), y2: y(v) }));
+      svg.appendChild(el("text", { class: "axis", x: m.l - 10, y: y(v) + 4, "text-anchor": "end" },
+        v === 0 ? "$0" : "$" + v));
+    });
+    svg.appendChild(el("text", { class: "axlabel", x: m.l - 46, y: m.t + 6,
+      transform: "rotate(-90 " + (m.l - 46) + " " + (m.t + 6) + ")" }, "Cost per lead"));
+    svg.appendChild(el("text", { class: "axlabel", x: m.l, y: H - 10 }, "Colder"));
+    svg.appendChild(el("text", { class: "axlabel", x: W - m.r, y: H - 10, "text-anchor": "end" },
+      "Ready to buy"));
+    svg.appendChild(el("line", { class: "gridline", x1: m.l, x2: W - m.r,
+      y1: H - m.b, y2: H - m.b }));
+
+    CHANNELS.forEach(function (c) {
+      var r = 7 + Math.sqrt(c.vol) * 1.5;
+      var col = tierColor(c.tier);
+      var g = el("g", { class: "mark" });
+      g.appendChild(el("circle", { cx: x(c.intent), cy: y(c.cpl), r: r,
+        fill: col, "fill-opacity": .3, stroke: col, "stroke-width": 2 }));
+      // Direct label on every mark: the relief the validator requires for the
+      // light-mode contrast warning, and it removes reliance on hue entirely.
+      var right = c.intent < 60;
+      g.appendChild(el("text", {
+        class: "dotlabel",
+        x: x(c.intent) + (right ? r + 7 : -(r + 7)),
+        y: y(c.cpl) + 4,
+        "text-anchor": right ? "start" : "end"
+      }, c.n));
+      g.addEventListener("mouseenter", function () {
+        clearTip(svg);
+        tip(svg, x(c.intent), y(c.cpl) - r, [c.n,
+          "Cost per lead: " + (c.cpl ? "~$" + c.cpl : "free"),
+          c.note]);
+      });
+      g.addEventListener("mouseleave", function () { clearTip(svg); });
+      svg.appendChild(g);
+    });
+
+    legend("chan-legend", TIERS.map(function (n, i) { return { n: n, c: tierColor(i) }; }));
+
+    var rows = CHANNELS.slice().sort(function (a, b) { return b.intent - a.intent; })
+      .map(function (c) {
+        return "<tr><td>" + c.n + "</td><td>" + TIERS[c.tier] + "</td><td class='num'>" +
+          c.intent + "</td><td class='num'>" + (c.cpl ? "$" + c.cpl : "free") +
+          "</td><td>" + c.note + "</td></tr>";
+      }).join("");
+    document.getElementById("chan-table").innerHTML =
+      "<table><thead><tr><th>Channel</th><th>Tier</th><th class='num'>Intent</th>" +
+      "<th class='num'>Cost / lead</th><th>Note</th></tr></thead><tbody>" + rows + "</tbody></table>";
+  }
+
+  /* ---------- chart 2: seasonality ---------- */
+  function drawSeasons() {
+    var svg = document.getElementById("seas");
+    var W = 860, H = 320, m = { t: 16, r: 16, b: 40, l: 44 };
+    clear(svg);
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    svg.setAttribute("width", W); svg.setAttribute("height", H);
+
+    var max = 16;
+    var bw = (W - m.l - m.r) / MONTHS.length;
+    var y = function (v) { return H - m.b - (v / max) * (H - m.t - m.b); };
+
+    [0, 4, 8, 12, 16].forEach(function (v) {
+      svg.appendChild(el("line", { class: "gridline", x1: m.l, x2: W - m.r, y1: y(v), y2: y(v) }));
+      svg.appendChild(el("text", { class: "axis", x: m.l - 8, y: y(v) + 4, "text-anchor": "end" }, v + "%"));
+    });
+
+    MONTHS.forEach(function (mo, i) {
+      var cx = m.l + i * bw;
+      // 2px surface gap between adjacent fills
+      var w = bw / 2 - 3;
+      [[DEMAND[i], cssv("--s1"), "Share of demand"],
+       [BUDGET[i], cssv("--s2"), "Share of budget"]].forEach(function (d, k) {
+        var g = el("g", { class: "mark" });
+        var bx = cx + 3 + k * (w + 2);
+        g.appendChild(el("rect", { x: bx, y: y(d[0]), width: w,
+          height: (H - m.b) - y(d[0]), rx: 4, fill: d[1] }));
+        g.addEventListener("mouseenter", function () {
+          clearTip(svg);
+          tip(svg, bx + w / 2, y(d[0]), [mo, d[2] + ": " + d[0] + "%"]);
+        });
+        g.addEventListener("mouseleave", function () { clearTip(svg); });
+        svg.appendChild(g);
+      });
+      svg.appendChild(el("text", { class: "axis", x: cx + bw / 2, y: H - 22,
+        "text-anchor": "middle" }, mo));
+    });
+
+    legend("seas-legend", [
+      { n: "Share of annual demand", c: cssv("--s1") },
+      { n: "Share of annual ad budget", c: cssv("--s2") }
+    ]);
+
+    document.getElementById("seas-table").innerHTML =
+      "<table><thead><tr><th>Month</th><th class='num'>Demand</th>" +
+      "<th class='num'>Budget</th></tr></thead><tbody>" +
+      MONTHS.map(function (mo, i) {
+        return "<tr><td>" + mo + "</td><td class='num'>" + DEMAND[i] +
+          "%</td><td class='num'>" + BUDGET[i] + "%</td></tr>";
+      }).join("") + "</tbody></table>";
+  }
+
+  /* ---------- chart 3: 90-day plan ---------- */
+  function drawPlan() {
+    var svg = document.getElementById("plan");
+    var rowH = 40, W = 860, m = { t: 30, r: 20, b: 30, l: 250 };
+    var H = m.t + PHASES.length * rowH + m.b;
+    clear(svg);
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    svg.setAttribute("width", W); svg.setAttribute("height", H);
+
+    var x = function (d) { return m.l + (d / 90) * (W - m.l - m.r); };
+    [0, 30, 60, 90].forEach(function (d) {
+      svg.appendChild(el("line", { class: "gridline", x1: x(d), x2: x(d), y1: m.t - 12, y2: H - m.b }));
+      svg.appendChild(el("text", { class: "axis", x: x(d), y: m.t - 18, "text-anchor": "middle" },
+        d === 0 ? "Day 0" : "Day " + d));
+    });
+
+    PHASES.forEach(function (p, i) {
+      var yy = m.t + i * rowH;
+      var col = tierColor(p.tier);
+      svg.appendChild(el("text", { class: "axis", x: m.l - 14, y: yy + 20,
+        "text-anchor": "end", fill: cssv("--ink"), "font-weight": 600 }, p.n));
+      var g = el("g", { class: "mark" });
+      g.appendChild(el("rect", { x: x(p.s), y: yy + 8, width: Math.max(x(p.e) - x(p.s), 6),
+        height: 20, rx: 5, fill: col }));
+      g.addEventListener("mouseenter", function () {
+        clearTip(svg);
+        tip(svg, (x(p.s) + x(p.e)) / 2, yy + 8, [p.n, "Day " + p.s + " to " + p.e]);
+      });
+      g.addEventListener("mouseleave", function () { clearTip(svg); });
+      svg.appendChild(g);
+    });
+
+    legend("plan-legend", [
+      { n: "Foundation (free)", c: tierColor(0) },
+      { n: "Paid channels", c: tierColor(1) },
+      { n: "Review", c: tierColor(2) }
+    ]);
+  }
+
+  /* ---------- calculator ---------- */
+  var ids = ["spend", "cpl", "close", "ticket", "margin"];
+  function calc() {
+    var v = {};
+    ids.forEach(function (i) { v[i] = +document.getElementById(i).value; });
+
+    document.getElementById("o-spend").textContent = money(v.spend) + "/mo";
+    document.getElementById("o-cpl").textContent = money(v.cpl);
+    document.getElementById("o-close").textContent = v.close + "%";
+    document.getElementById("o-ticket").textContent = money(v.ticket);
+    document.getElementById("o-margin").textContent = v.margin + "%";
+
+    var leads = v.spend / v.cpl;
+    var jobs = leads * (v.close / 100);
+    var revenue = jobs * v.ticket;
+    var profit = revenue * (v.margin / 100);
+    var cac = jobs > 0 ? v.spend / jobs : 0;
+    var roas = v.spend > 0 ? revenue / v.spend : 0;
+
+    document.getElementById("t-leads").textContent = Math.round(leads);
+    document.getElementById("t-jobs").textContent = Math.round(jobs);
+    document.getElementById("t-cac").textContent = money(cac);
+    document.getElementById("t-roas").textContent = roas.toFixed(1) + "x";
+
+    var net = profit - v.spend;
+    var vb = document.getElementById("verdict");
+    if (net > 0) {
+      vb.dataset.state = "good";
+      vb.innerHTML = "<b>Works.</b> " + money(revenue) + " of revenue on " + money(v.spend) +
+        " of spend. After a " + v.margin + "% margin that is <b>" + money(profit) +
+        "</b> gross profit, or <b>" + money(net) + "</b> once the ad spend is paid back. " +
+        "Each booked job costs " + money(cac) + " to win.";
+    } else {
+      vb.dataset.state = "bad";
+      vb.innerHTML = "<b>Loses money.</b> " + money(profit) + " of gross profit against " +
+        money(v.spend) + " of spend — down <b>" + money(-net) + "</b> a month. " +
+        "At these numbers a booked job costs " + money(cac) + " to win and only returns " +
+        money(v.ticket * v.margin / 100) + ". Raise the close rate, lower the cost per " +
+        "lead, or sell a higher-value job.";
+    }
+    drawFunnel(v, leads, jobs, revenue, profit);
+  }
+
+  function drawFunnel(v, leads, jobs, revenue, profit) {
+    var svg = document.getElementById("funnel");
+    var W = 640, rowH = 42, m = { t: 8, r: 8, b: 8, l: 8 };
+    var stages = [
+      { n: "Ad spend", v: money(v.spend), w: 1 },
+      { n: Math.round(leads) + " leads", v: money(v.cpl) + " each", w: .82 },
+      { n: Math.round(jobs) + " booked jobs", v: v.close + "% of leads", w: .58 },
+      { n: "Revenue", v: money(revenue), w: .78 },
+      { n: "Gross profit", v: money(profit), w: .5 }
+    ];
+    var H = m.t + stages.length * rowH + m.b;
+    clear(svg);
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    svg.setAttribute("width", W); svg.setAttribute("height", H);
+
+    stages.forEach(function (s, i) {
+      var yy = m.t + i * rowH;
+      var full = W - m.l - m.r;
+      var w = Math.max(full * s.w, 120);
+      var col = i === 4 ? cssv("--s3") : cssv("--s1");
+      svg.appendChild(el("rect", { x: m.l, y: yy + 3, width: w, height: rowH - 8, rx: 5,
+        fill: col, "fill-opacity": i === 4 ? .95 : .18 - i * .02 + .12,
+        stroke: col, "stroke-width": 1.5 }));
+      svg.appendChild(el("text", { x: m.l + 12, y: yy + rowH / 2 + 2,
+        fill: i === 4 ? "#fff" : cssv("--ink"), "font-size": 12.5, "font-weight": 700 }, s.n));
+      svg.appendChild(el("text", { x: m.l + w - 12, y: yy + rowH / 2 + 2, "text-anchor": "end",
+        fill: i === 4 ? "#fff" : cssv("--body"), "font-size": 11.5 }, s.v));
+    });
+  }
+
+  ids.forEach(function (i) {
+    document.getElementById(i).addEventListener("input", calc);
+  });
+
+  function drawAll() { drawChannels(); drawSeasons(); drawPlan(); calc(); }
+  drawAll();
+  addEventListener("resize", function () { drawChannels(); drawSeasons(); drawPlan(); });
+})();
+</script>
+</body>
+</html>
