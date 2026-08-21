@@ -114,7 +114,9 @@ def main():
             "  font-style: normal;\n"
             "  font-weight: %s;\n"
             "  font-display: swap;\n"
-            "  src: url('/assets/fonts/%s') format('woff2');\n"
+            # Same directory as fonts.css, so a bare filename resolves at a
+            # domain root, under a /repo/ subpath, and over file:// alike.
+            "  src: url('%s') format('woff2');\n"
             "}" % (family, weight, name)
         )
 
