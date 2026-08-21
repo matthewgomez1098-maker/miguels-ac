@@ -3,6 +3,30 @@
 Static site for an Inland Empire / Los Angeles HVAC company. 43 pages, no build
 dependencies, no framework. Built from the Relume wireframe export.
 
+## Live preview
+
+**https://matthewgomez1098-maker.github.io/miguels-ac/**
+
+Hosted on GitHub Pages from the `main` branch of
+`matthewgomez1098-maker/miguels-ac`. Opens on any phone, no login.
+
+It is *unlisted, not private*: anyone with the link can open it, but every page
+carries `noindex, nofollow` so search engines skip it. Do not treat the URL as
+a secret.
+
+To update it, commit and push — Pages redeploys in about a minute:
+
+```bash
+python3 build.py && git add -A && git commit -m "update" && git push
+```
+
+### Turning off preview mode
+
+`build.py` has `PREVIEW = True` at the top. While that is on, every page gets
+the placeholder banner, the "Sample - not real" labels, and `noindex`. Set it to
+`False`, rebuild and push when the real licence number, address and reviews are
+in and you want Google to index the site.
+
 ## Run it locally
 
 ```bash
