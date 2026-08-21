@@ -640,7 +640,7 @@ site and marked noindex.</div></footer>
   /* ---------- chart 1: channel map ---------- */
   function drawChannels() {
     var svg = document.getElementById("chan");
-    var W = 860, H = 460, m = { t: 18, r: 24, b: 46, l: 62 };
+    var W = 860, H = 460, m = { t: 18, r: 24, b: 46, l: 66 };
     clear(svg);
     svg.setAttribute("viewBox", "0 0 " + W + " " + H);
     svg.setAttribute("width", W); svg.setAttribute("height", H);
@@ -653,8 +653,10 @@ site and marked noindex.</div></footer>
       svg.appendChild(el("text", { class: "axis", x: m.l - 10, y: y(v) + 4, "text-anchor": "end" },
         v === 0 ? "$0" : "$" + v));
     });
-    svg.appendChild(el("text", { class: "axlabel", x: m.l - 46, y: m.t + 6,
-      transform: "rotate(-90 " + (m.l - 46) + " " + (m.t + 6) + ")" }, "Cost per lead"));
+    // Anchor the rotated label at the axis midpoint, or it runs off the top edge.
+    var lx = 16, ly = (m.t + H - m.b) / 2;
+    svg.appendChild(el("text", { class: "axlabel", x: lx, y: ly, "text-anchor": "middle",
+      transform: "rotate(-90 " + lx + " " + ly + ")" }, "Cost per lead"));
     svg.appendChild(el("text", { class: "axlabel", x: m.l, y: H - 10 }, "Colder"));
     svg.appendChild(el("text", { class: "axlabel", x: W - m.r, y: H - 10, "text-anchor": "end" },
       "Ready to buy"));
