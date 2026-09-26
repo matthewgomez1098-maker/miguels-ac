@@ -248,6 +248,24 @@ p { text-wrap: pretty; }
 .burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
 .burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+/* Between the burger breakpoint and ~1320px the full desktop header does not
+   fit on one line — it needs ~1290px and overflows the viewport below that,
+   pushing the "Book online" button off screen. Wrap the nav onto its own row
+   instead of hiding anything: the phone number and the CTA are the two things
+   on this site that actually convert. */
+@media (min-width: 1041px) and (max-width: 1320px) {
+  .header__inner { flex-wrap: wrap; row-gap: 0; padding-block: .4rem; min-height: 0; }
+  .logo { order: 1; }
+  .header__cta { order: 2; }
+  .nav {
+    order: 3; flex-basis: 100%;
+    justify-content: center; gap: .1rem;
+    border-top: 1px solid var(--line);
+    margin-top: .4rem; padding-top: .15rem;
+  }
+  .nav > a:not(.btn), .nav__toggle { font-size: .9rem; padding: .5rem .7rem; }
+}
+
 @media (max-width: 1040px) {
   .burger { display: flex; }
   .header__phone { display: none; }
